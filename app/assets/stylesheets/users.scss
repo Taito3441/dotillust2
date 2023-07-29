@@ -1,0 +1,780 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*-----------------新規登録-----------------*/
+.sign_up_all {
+    text-align: center;
+    
+}
+.name_position {
+    position: relative;
+    
+    justify-content: center;
+    
+}
+.nametext {
+    width: 30vw;
+    height: 3vw;
+    font-size: 30px;
+    
+}
+.horizontal-line2 {
+    top: 100%;
+    right: 0;
+    margin-top: 5vh;
+    width: 110vh;
+    border: 0;
+    height: 2.5px;
+    background-image: linear-gradient(to right, #a500fe, #000000);
+    transform: translateX(12vw);
+}
+.on-hold {
+    margin: 5px;
+    
+}
+.fa-solid {
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+}
+.usercircle {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border: 1.5px solid black; 
+    border-radius: 50%;
+    background-color: #b8b8b8;
+    z-index: 50;
+}
+
+.custom-file-upload {
+    position: relative;
+    display: flex;
+    font-size: larger;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.check-box2 {
+    width: 20px;
+    height: 20px;
+}
+.agreementcontainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.terms-service-container {
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.terms-service-container label {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 60vw;
+    height: 5vh;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: rgb(5, 5, 5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.terms-service-container input[type="checkbox"] {
+    display: none;
+}
+
+.terms-service-container .clickcontent {
+    height: 0;
+    width: 60vw;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.switch:checked + .clickcontent {
+    top: 10vh;
+    height: auto;
+    width: 59.6vw;
+    padding: 10px;
+    background: #f7f7f7;
+}
+.clickcontent p {
+    text-align: left;
+}
+.actions-signin {
+    margin-top: 7vh;
+}
+/*----------------------------------------*/
+
+/*------------------ログイン----------------------*/
+.rogin_all {
+    text-align: center;
+}
+.form-class {
+    position: relative;
+}
+.email_position, .pass_position {
+    position: relative;
+}
+.email_position {
+    background-image: url(dot_email.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50vw;
+    height: 5vw;
+    margin: auto;
+}
+.pass_position {
+    background-image: url(dot_pass.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50vw;
+    height: 5vw;
+    margin: auto;
+}
+.email_form, .pass_form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[type="email"] {
+    width: 30vw;
+    height: 3vw;
+    margin-left: 22%;
+    margin-bottom: 1.5%;
+    font-size: 30px;
+}
+
+input[type="password"] {
+    width: 30vw;
+    height: 3vw;
+    margin-left: 22%;
+    margin-bottom: 1.5%;
+    font-size: 30px;
+}
+.check-box1 {
+    width: 5vh;
+}
+.rogcheckbox {
+    display: flex;
+    justify-content: center;
+}
+.line-image-container {
+    position: relative;
+    width: 110vh;
+    height: auto;
+    margin: 5vh auto;
+    background-color: #000000;
+}
+.line-image1 {
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 0;
+    transform: translate(-110%, -100%); 
+    z-index: 50;
+}
+.line-image2 {
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 0;
+    transform: translateY(-100%);
+    z-index: 50;
+}
+.horizontal-line {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 110vh;
+    border: 0;
+    height: 2.5px;
+    background-image: linear-gradient(to right, #a500fe, #000000);
+}
+/*----------------------------------------*/
+
+/*--------------------ステータス・マイページ--------------------*/
+.status-titlestring {
+    text-align: center;
+    font-size: 7vh;
+    font-weight: bold;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+@media screen and (max-width: 1300px) {
+    .status-titlestring {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.status-contant {
+    min-height: 80vh;
+    display: flex;
+    position: relative;
+    margin-bottom: 6.5vh
+}
+
+.usericon-background {
+    top: 30vh;
+    width: 400px;
+    min-height: 50vh;
+    background-image: url(statusiconback.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: fixed;
+}
+@media screen and (max-width: 1300px) {
+    .usericon-background {
+        display: none;
+    }
+}
+.usericon {
+    border: 2px solid ;
+    border-radius: 100%;
+    width:  200px;
+    height: 200px;
+    bottom: 0;
+    transform: translate(68px,-80px)
+}
+.total_likes {
+    position: absolute;
+    font-weight: bold;
+    font-size: 50px;
+    bottom: 3px;
+    left: 12.1vw;
+    
+}
+.status-right {
+    margin-left: 30%;
+    width: 60vw;
+}
+@media screen and (max-width: 1300px) {
+    .status-right {
+        margin: auto;
+        width: 100%;
+    }
+}
+.namemailcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.status-name {
+    color: rgb(51, 51, 51);
+    font-size: 5vw;
+    font-weight: bold;
+}
+@media screen and (max-width: 1300px) {
+    .status-name {
+        font-size: 10vw;
+    }
+}
+.status-mail {
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+}
+.status-profile {
+    font-weight: bold;
+}
+.follow-edit-container {
+    display: flex;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    align-items: center;
+    justify-content: center;
+}
+.unfollow-btn {
+    background-color: #d7d7d769; 
+    border: solid; 
+    color: rgb(65, 65, 65); 
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 2em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 5vw;
+    cursor: pointer;
+    animation: color-change 7s infinite alternate;
+}
+@keyframes color-change {
+    0% { border-color: rgb(255, 0, 0); }
+    10% { border-color: rgb(255, 0, 153); }
+    20% { border-color: rgb(204, 0, 255); }
+    30% { border-color: rgb(51, 0, 255); }
+    40% { border-color: rgb(0, 102, 255); }
+    50% { border-color: rgb(0, 255, 255); }
+    60% { border-color: rgb(0, 255, 102); }
+    70% { border-color: rgb(51, 255, 0); }
+    80% { border-color: rgb(204, 255, 0); }
+    90% { border-color: rgb(255, 153, 0); }
+    100% { border-color: rgb(255, 0, 0); }
+}
+.follow-btn {
+    color: rgb(255, 255, 255); 
+    background-color: #007ecd;
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 2em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 2vw;
+    cursor: pointer;
+    transition-duration: 0.8s; 
+}
+.follow-btn:hover {
+    color: #000000;
+    background-color: #ffffff;
+    animation: color-change 7s infinite alternate;
+}
+.stats-follow {
+    margin-left: 10vw;
+    display: flex;
+}
+.following-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    border: #000000;
+    border-style: solid;
+    border-radius: 2em;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.following-link:hover {
+    background-color: #ffffff;
+}
+.follower-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    border: #000000;
+    border-style: solid;
+    border-radius: 2em;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.follower-link:hover {
+    background-color: #ffffff;
+}
+.follow-block {
+    width: 2vw;
+}
+.status-editbtn {
+    border: solid; 
+    color: rgb(0, 0, 0); 
+    border-radius: 2em;
+    background-color: #33ff00;
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 15vw;
+    cursor: pointer;
+    transition-duration: 0.4s; 
+}
+.status-editbtn:hover {
+    background-color: #ffffff;
+    color: #29cd00;
+}
+.status-deletebtn {
+    border: #000000;
+    border-style: solid;
+    margin-left: 1vh;
+}
+.horizontal-line3-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.horizontal-line3 {
+    position: absolute;
+    transform: translateX(2vw);
+    width: 62%;
+    border: 0;
+    height: 2.5px;
+    background-image: linear-gradient(to right, #a500fe, #000000);
+}
+@media screen and (max-width: 1300px) {
+    .horizontal-line3 {
+        width: 90%;
+    }
+}
+.statususerillusttitle {
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+}
+.statusillustsindex {
+    min-height: 15vh;
+    max-height: 85vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.statuslikestitle {
+    margin: 5vh;
+    margin-bottom: 1vh;
+}
+
+.statusillust {
+    margin: 5px;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hover-zoom {
+    image-rendering: pixelated;
+    display: block;
+    position: relative;
+    z-index: 100;
+    transition: transform .2s;
+}
+.statusillust:hover .hover-zoom {
+    transform: scale(1.1); 
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    z-index: 150;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.statusillust:hover .overlay {
+    opacity: 1;
+}
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.statusillust:hover .hover-text {
+    opacity: 1;
+}
+.hover-text-titles {
+    width: 250px;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    flex-grow: 1;
+    text-shadow: 2px 2px 2px #000000; 
+}
+.hover-text-titles:hover {
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.statusillust a {
+    text-decoration: none;
+}
+
+.hover-username {
+    display: flex;
+}
+.hover-tag-container {
+    display: flex;
+    width: 250px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+}
+.hover-tag-border {
+    font-weight: bold;
+    color: #5136ff;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px #000000; 
+}
+.hover-tag-border:hover {
+    text-decoration: underline;
+    text-decoration-color: #3651ff;
+}
+.hover-pixel-like-container {
+    width: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.hover-pixelsize-container {
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+}
+.hover-likes-container {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 0, 1%;
+}
+.statuslikesbutton {
+    width: 5vh;
+    height: auto;
+    transform: translateX(-10%);
+}
+.statuslikeillustsindex {
+    min-height: 15vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.illust-return {
+    background-color: #d7d7d769; 
+    border: none; 
+    color: rgb(0, 0, 0); 
+    padding: 15px 32px; 
+    width: 20vw;
+    height: 3vh;
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 2em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6vh;
+    margin-left: 30vw;
+    cursor: pointer;
+    transition-duration: 0.45s; 
+}
+
+.illust-return:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+.illust-return-container {
+    width: 100%;
+    height: auto;
+}
+/*----------------------------------------*/
+/*-----------------ステータス編集------------------*/
+.statusedit-all {
+    text-align: center;
+}
+.statuseditplofarea {
+    width: 20vw;
+    height: 10vh;
+}
+.edit-notice {
+    color: #ff0000;
+}
+.statusedit-actions {
+    margin-top: 4vh;
+    margin-bottom: 10vh;
+}
+.statuseditsubmit {
+    border: solid; 
+    border-color: #33ff00;
+    color: #000000; 
+    border-radius: 2em;
+    background-color: #ffffff;
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 0.4s; 
+}
+.statuseditsubmit:hover {
+    background-color: #33ff00;
+    color: #ffffff;
+}
+.horizontal-line4 {
+    position: absolute;
+    transform: translateX(9vw);
+    width: 70vw;
+    border: 0;
+    height: 2.5px;
+    background-image: linear-gradient(to right, #a500fe, #000000);
+}
+.statusdelete-button {
+    background-color: #ff1e1e; 
+    border: none; 
+    color: white; 
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 2em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+    cursor: pointer;
+    transition-duration: 0.8s; 
+}
+.statusdelete-button:hover {
+    background-color: #000000;
+    color: #ff0000;
+}
+/*----------------------------------------*/
+/*---------------クリエイターインデックス------------------*/
+.creindextitle {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 2vh;
+
+}
+.creindexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 60vh;
+    width: 85.5vw;
+    margin-bottom: 5vh;
+}
+.creindexbox {
+    width: 15.65vw;
+    height: 29vh;
+    margin-right: 1.2vw;
+    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgb(255, 255, 255) 10px,
+    rgb(255, 255, 255) 20px
+    );
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+}
+.creindexbox1 {
+    width: 100%;
+    height: 20%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user7 {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 5px;
+    transition: all 1s;
+}
+.creindexbox:hover .user7 {
+    box-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e;
+}
+.creindexname {
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    transition: all 1s;
+}
+.creindexbox:hover .creindexname {
+    text-shadow: 0 0 10px #48ff4e;
+}
+.creindexbox2 {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.most_likedillust {
+    width: 160px;
+    height: 160px;
+    border: rgba(0, 0, 0, 0.3);
+    border-style: solid;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    image-rendering: pixelated;
+}
+.most_recent_illust {
+    width: 100px;
+    height: 100px;
+}
+/*----------------------------------------*/
+/*------------------フォロワー一覧-------------------*/
+.followerindex-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+.followerscontainer {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 60vh;
+    width: 85.5vw;
+    margin-bottom: 5vh;
+}
+/*----------------------------------------*/
+.followindex-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+.followcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 60vh;
+    width: 85.5vw;
+    margin-bottom: 5vh;
+}
+/*---------------shared link----------------------*/
+.signin-container {
+    position: relative;
+    height: auto;
+    margin:2vh;
+    transform: translateY(50%);
+}
+.signinbutton {
+    width: auto;
+    height: 10vh;
+}
+.rogbutton-container {
+    position: relative;
+    height: auto;
+    margin: 5vh;
+}
+.rogbutton {
+    
+    width: auto;
+    height: 10vh;
+}
+/*----------------------------------------*/

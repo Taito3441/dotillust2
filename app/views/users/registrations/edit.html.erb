@@ -1,0 +1,73 @@
+<div class="statusedit-all">
+  <h2 class="statusedittitle">ステータス編集</h2>
+  <%= resource_name.to_s.humanize %>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <h2>名前</h2>
+      <div class="status-edit-name">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"nametext" %>
+      </div>
+    </div>
+    <h2>アイコン画像</h2>
+    <label class="custom-file-upload">
+      <div class="usercircle"></div>
+      <%= f.file_field :image, id: "user_image", style: 'display: none;' %>
+      <label for="user_image">
+          <i class="fa-sharp fa-solid fa-circle-user fa-4x"></i>
+      </label>
+      
+      <div id="new-user-image"></div>
+    </label>
+
+<br>
+    <div class="field">
+      <h2 class="statuseditprof">自己紹介</h2>
+      <%= f.text_area :profile, autofocus: true, class: "statuseditplofarea" %>
+    </div>  
+<br>
+    <div class="field">
+      <h2 class="statuseditmail">メールアドレス</h2>
+      <div class="email_position">
+        <span class="email_form"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+      </div>
+    </div>
+    <br>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <h2 class="statuseditpass">新パスワード</h2><i>(パスワードを変更する際は入力してください)</i>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :password, autocomplete: "new-password" %></span>
+      </div>
+    </div>
+
+    <div class="field">
+      <h2 class="statuseditpass2">新パスワードの確認</h2>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></span>
+      </div>
+    </div>
+<br>
+    <div class="field">
+      <h2 class="statuseditpass3">現在のパスワード</h2><i class="edit-notice">(編集するには現在のパスワードが必要です)</i>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :current_password, autocomplete: "current-password" %></span>
+      </div>
+    </div>
+
+    <div class="statusedit-actions">
+      <%= f.submit "編集完了！", class: "statuseditsubmit" %>
+    </div>
+  <% end %>
+  <hr class="horizontal-line4">
+  <br>
+  <h3 class="statusdestroy">アカウントの削除</h3>
+  <i>このアカウントを削除しますか？</i>
+  <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいでしょうか？", turbo_confirm: "本当に削除してよろしいでしょうか？" }, method: :delete, class: "statusdelete-button" %>
+</div>

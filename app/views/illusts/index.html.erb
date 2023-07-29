@@ -1,0 +1,85 @@
+<h3 class="indexmaintitle">一覧ページ</h3>
+
+<div class="illust-container">
+    <div class="indexseachposition">
+        <h3 class="indexsearchtitle">投稿を検索</h3>
+        <%= form_tag({controller:"illusts",action:"index"}, method: :get) do %>
+            <%= text_field_tag :search, nil, class: 'search-field' %>
+            <%= button_tag(type: 'submit', class: 'rounded-button') do %>
+                <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+            <% end %>
+        <% end %>
+    </div>
+    <br>
+    <%= link_to '最新の投稿順', {order: 'desc'}, class: "sort-link #{'active-sort' if params[:order] == 'desc'}" %>
+    <%= link_to '最古の投稿順', {order: 'asc'}, class: "sort-link #{'active-sort' if params[:order] == 'asc'}" %>
+    <p class="entries-info"><%= page_entries_info @illusts %></p>
+    <%= paginate @illusts %>
+    <div class="illust-list">
+        <% @illusts.each do |t| %>
+            
+            <div class="illustindex-container">
+                <div class="indexcontainer1">
+                    <%= link_to user_path(t.user.id) do %>
+                        <%= image_tag t.user.image_url, size: "120x120",  alt: "ドット絵", class:"user8", style: "image-rendering: pixelated;" if t.user.image? %>
+                        <span class="indexusername"><%= t.user.name %></span>
+                    <% end %>
+                </div>
+                <div class="indexcontainer2">
+                    <%= link_to illust_path(t.id), class:"imagesizeclass" do %>
+                        <%= image_tag t.image_url, size: "192x192", alt: "ドット絵", style: "image-rendering: pixelated;" if t.image? %>
+                    <% end %>
+                    <span class="indexillusttitle"><%= t.titles %></span>
+                </div>
+                <div class="indexcontainer3">
+                    <div class="indexlikes">
+                        <% if user_signed_in? %>
+                            <% if current_user.already_liked?(t) %>
+                                <%= link_to illust_like_path(id: t.id, illust_id: t.id), method: :delete do %>
+                                    <%= image_tag("likeson.png", class: "indexlikesbutton") %><%= t.likes.count%>
+                                <% end %>
+                            <% else %>
+                                <%= link_to illust_likes_path(id: t.id, illust_id: t.id), method: :post do %>
+                                    <%= image_tag("likesoff.png", class: "indexlikesbutton") %><%= t.likes.count%>
+                                <% end %>
+                            <% end %>
+                        <% else %>
+                            <%= image_tag("likesoff.png", class: "indexlikesbutton") %><%= t.likes.count%>
+                        <% end %>
+                    </div>
+                    <div class="indexpixels">
+                        ピクセル:<%= t.pixels %>
+                    </div>
+                </div>
+                <div class="indexcontainer4">
+                    <% t.tags.each do |tag| %>
+                        <% if tag.illusts.count > 0 %>
+                            <div class="indextag-border">
+                                #<%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id), class: "text-none" %>
+                                
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="indexcontainer5">
+                    <% if user_signed_in? && current_user.id == t.user_id %>
+                        <%= link_to "編集する", edit_illust_path(t.id), class:"indexeditbutton" %>
+                        <div class="indexcontainnerbox"></div>
+                        <%= link_to "削除する", illust_path(t.id), method: :delete, class:"indexdelete" %>
+                    <% end %> 
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <h3 class="indextaglisttitle">タグリスト</h3>
+    <div class="indextagindex">
+    
+        <% Tag.all.each do |tag| %>
+        <div class="tag-border">
+            #<%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id), class: "text-none" %>
+            <%= "(#{tag.illusts.count})" %>
+        </div>
+        <% end %>
+    
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="sign_up_all">
+  <div class="sign_up_title">
+    <h1>新規登録</h1>
+  </div>
+
+  <script>
+    function validateForm() {
+      var isChecked = document.getElementById('agreement').checked;
+      if(!isChecked) {
+        alert("利用規約に同意するためにチェックボックスをチェックしてください。");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {onsubmit: "return validateForm();"}) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+    <br />
+
+    <div class="field">
+      <h2>名前</h2>
+      <div class="name_position">
+        <%= f.text_field :name, autofocus: true, id: "input1", onkeydown: "return autoTab(event, this, 'user_image')", placeholder: "佐藤　太朗", class:"nametext" %>
+      </div>
+    </div>
+    <br />
+    <div class="on-hold">
+      <h2>アイコン画像</h2>
+
+      <label class="custom-file-upload">
+        <div class="usercircle"></div>
+        <%= f.file_field :image, id: "user_image", style: 'display: none;', onkeydown: "return autoTab(event, this, 'input3')" %>
+        <label for="user_image">
+            <i class="fa-sharp fa-solid fa-circle-user fa-4x"></i>
+        </label>
+        
+        <div id="new-user-image"></div>
+      </label>
+    </div>
+
+    <br />
+    <div class="field">
+      <h2>メールアドレス</h2>
+      <div class="email_position">
+        <span class="email_form"><%= f.email_field :email, autofocus: true, autocomplete: "email", id: "input3", onkeydown: "return autoTab(event, this, 'input4')", placeholder: "number1234@mail.com" %></span>
+      </div>
+    </div>
+    <br />
+    <div class="field">
+      <h2>登録するパスワード（６文字以上）</h2>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :password, autocomplete: "new-password", id: "input4", onkeydown: "return autoTab(event, this, 'input5')", placeholder: "password123456" %></span>
+      </div>
+    </div>
+    <br />
+    <div class="field">
+      <h2>パスワード確認</h2>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :password_confirmation, autocomplete: "new-password", id: "input5", onkeydown: "return autoTab(event, this, 'input6')", placeholder: "password123456" %></span>
+      </div>
+    </div>
+    <br />
+    
+      <h2>
+      <%= f.check_box :agreement, id: "agreement", onkeydown: "return autoTab(event, this, 'input6')", class:"check-box2" %>
+      <label for="agreement"></label>
+      利用規約に同意する
+      </h2>
+        <div class="agreementcontainer">
+          <div class="terms-service-container">
+            <label for="label1">●利用規約●</label>
+            <input type="checkbox" id="label1" class="switch" />
+            <!-- ↓↓最初隠したいコンテンツ↓↓ -->
+            <div class="clickcontent">
+              <p>
+              <br><br>
+                利用規約<br><br>
+                1. 利用目的：素材の利用目的は商的利用、個人利用など全てにおいて使用可能です。<br><br>
+                2. 利用条件：素材の利用に関する条件は本サービスの利用規約を許諾し、アカウントを所持している方<br><br>
+                3. 権利保有者：素材の権利者は著作者にありますが、本サービスに投稿した際に全ての利用に対して許諾したことになる<br><br>
+                4. 利用許可範囲：第三者による私物化以外基本的にはOKです。（問題が起こり次第追加していく可能性があります）<br><br>
+                5. 利用料：利用料はありません。ですが今後課金制度を追加する場合がありますが、基本無料でお楽しみいただけます。<br><br>
+                6. 免責事項：素材の使用による問題やトラブルは本サービスでは対応出来ません。<br><br>
+                7. 著作権表示：素材を利用する際、著作権表示は心の優しい方は著作者を応援する目的で表示していただけるとありがたいです。<br><br>
+                8. 素材の修正・変更：素材を修正する場合、本サービスではハートを押した作品のみ可能となります。<br><br>
+                9. 素材の削除：本サービスの運営が非適切だと判断した作品は警告なく削除する場合があります。<br><br>
+                10. 利用規約の変更：利用規約の変更がある場合には、その都度本サービス内でお知らせいたします。<br><br>
+              </p>
+            </div>
+            <!-- ↑↑最初隠したいコンテンツ ↑↑-->
+          </div>
+        </div>
+    
+    <br />
+
+    <div class="actions-signin">
+      <%= image_submit_tag("signinbutton.png", id: "input6") %>
+    </div>
+  <% end %>
+  <hr class="horizontal-line2">
+  <%= render "users/shared/links" %>
+</div>
+
+
+

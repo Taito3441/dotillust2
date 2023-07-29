@@ -1,0 +1,26 @@
+<!-- フォロー一覧-->
+<h2 class="followindex-title">フォロワー一覧</h2>
+<div class="followcontainer">
+    <% @users.each_with_index do |user, index| %>
+        <%= link_to user_path(user.id) do %>
+            <div class="creindexbox">
+                <div class="creindexbox1">
+                    <%= image_tag user.image_url, size: "120x120", class: "user7" if user.image? %>
+                    <span class="creindexname"><%= user.name %></span>
+                </div>
+                <div class="creindexbox2">
+                    <% if @most_liked_illusts[index].present? %>
+                        <%= image_tag @most_liked_illusts[index].image_url, size: "120x120", class: "most_likedillust" if @most_liked_illusts[index].image? %>
+                    <% else %>
+                        <% if @most_recent_illusts[index].present? %>
+                            <%= image_tag @most_recent_illusts[index].image_url, size: "120x120", class: "most_recent_illust" if @most_recent_illusts[index].image? %>
+                        <% else %>
+                            <p>No illusts yet.</p>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+<%= link_to "Illust一覧に戻る", illusts_path, class: "illust-return" %>

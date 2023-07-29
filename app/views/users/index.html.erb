@@ -1,0 +1,28 @@
+<h3 class="creindextitle">クリエイター一覧</h3>
+
+
+<div class="creindexcontainer">
+    <% @users.each_with_index do |user, index| %>
+        <%= link_to user_path(user.id) do %>
+            <div class="creindexbox">
+                <div class="creindexbox1">
+                    <%= image_tag user.image_url, size: "120x120", class: "user7", style: "image-rendering: pixelated;" if user.image? %>
+                    <span class="creindexname"><%= user.name %></span>
+                </div>
+                <div class="creindexbox2">
+                    <% if @most_liked_illusts[index].present? %>
+                        <%= image_tag @most_liked_illusts[index].image_url, size: "120x120", class: "most_likedillust", style: "image-rendering: pixelated;" if @most_liked_illusts[index].image? %>
+                    <% else %>
+                        <% if @most_recent_illusts[index].present? %>
+                            <%= image_tag @most_recent_illusts[index].image_url, size: "120x120", class: "most_recent_illust", style: "image-rendering: pixelated;" if @most_recent_illusts[index].image? %>
+                        <% else %>
+                            <p>No illusts yet.</p>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+<%= link_to "イラスト一覧へ", illusts_path, class: "illust-return" %>
+

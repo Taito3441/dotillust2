@@ -1,0 +1,284 @@
+
+<div class="all-draw-position">
+    <div class="canvasposition">
+        <div id="pixel-canvas"></div>
+    </div>
+
+    <div class="palette-container">
+        <div id="palette-box">
+            <div class="palette-right">
+                <div class="palette-right-up">
+                    <div class="draggingbox"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+                    <div class="draggingchangebox"><i class="fa-solid fa-retweet"></i></div>
+                </div>
+                <div class="palette-right-down">
+                    <button id="eraser-btn">消しゴム</button>
+                    <button id="undo-btn">巻き戻す</button>
+                </div>
+            </div>
+            <div class="palette-left">
+                <div class="palette-left-up">
+                    <input id="color-picker-1" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-2" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-3" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-4" class="color-picker" type="color" value="#000000">
+                </div>
+                <div class="palette-left-down">
+                    <input id="color-picker-5" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-6" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-7" class="color-picker" type="color" value="#000000">
+                    <input id="color-picker-8" class="color-picker" type="color" value="#000000">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="canvas-size">
+        <button id="size-16">16x16</button>
+        <button id="size-32">32x32</button>
+        <button id="size-64">64x64</button>
+        <button id="size-96">96x96</button>
+    </div>
+    <div class="savebtnposition">
+        <button id="save-btn">ダウンロード</button>
+    </div>
+    <div class="tyuuicontainer">
+        <p>
+            <span class="redtyuui">・描いている途中でサイズ変更すると白紙に戻ります</span><br><br>
+            ・テスト版なので今後修正予定<br><br>
+            ・もし良ければ<%= link_to '受信箱', 'https://marshmallow-qa.com/dotdotdot?utm_medium=url_text&utm_source=promotion' %>
+        </p>
+    </div>
+</div>
+
+<script>
+var sizes = [16, 32, 64, 96];
+var currentSizeButton = document.getElementById('size-16');
+var canvasSize = 320;
+var selectedColor = 'black';
+var transparentColor = 'rgba(0,0,0,0)';
+var eraserColor = 'rgba(255, 255, 255, 0.5)';
+var colorPickers = Array.from(document.getElementsByClassName('color-picker'));
+var pixelCanvas = document.getElementById('pixel-canvas');
+var saveButton = document.getElementById('save-btn');
+var eraserButton = document.getElementById('eraser-btn');
+var undoButton = document.getElementById('undo-btn');
+var isDrawing = false;
+var canvasHistory = [];
+var actionHistory = [];
+
+eraserButton.onclick = function() {
+    selectedColor = eraserColor;
+    colorPickers.forEach(function(otherPicker) {
+        otherPicker.style.border = "";
+    });
+    eraserButton.style.border = "2px solid #000000";
+};
+
+colorPickers.forEach(function(picker) {
+    picker.onclick = function(e) {
+        colorPickers.forEach(function(otherPicker) {
+            otherPicker.style.border = "";
+        });
+        eraserButton.style.border = "";
+        e.target.style.border = "2px solid #000000";
+        selectedColor = e.target.value;
+        e.stopPropagation();
+    };
+    picker.onchange = function(e) {
+        if (picker.style.border !== "") {
+            selectedColor = e.target.value;
+        }
+    };
+});
+
+function pushToHistory(target, color) {
+    var change = { pixel: target, color: color };
+    canvasHistory.push(change);
+    actionHistory[actionHistory.length - 1].push(change);
+}
+
+var sizes = [16, 32, 64, 96];
+var currentSizeButton = document.getElementById('size-16'); // Default size button 
+
+function setCanvasSize(size) {
+    while (pixelCanvas.firstChild) {
+        pixelCanvas.removeChild(pixelCanvas.firstChild);
+    }
+
+    var pixelSize = canvasSize / size;
+
+    pixelCanvas.style.gridTemplateColumns = `repeat(${size}, ${pixelSize}px)`;
+    pixelCanvas.style.gridTemplateRows = `repeat(${size}, ${pixelSize}px)`;
+
+    if (currentSizeButton) {
+        currentSizeButton.style.border = "";  // reset border of previously selected button
+    }
+    currentSizeButton = document.getElementById(`size-${size}`);
+    currentSizeButton.style.border = "2px solid #000000";  // set border for newly selected button
+
+    for (var i = 0; i < size * size; i++) {
+        var pixelDiv = document.createElement('div');
+        pixelDiv.classList.add('pixel');
+        pixelDiv.style.width = `${pixelSize}px`;
+        pixelDiv.style.height = `${pixelSize}px`;
+        pixelDiv.onmousedown = function(e) {
+            if (!isDrawing) {
+                actionHistory.push([]);
+            }
+            isDrawing = true;
+            var prevColor = e.target.style.backgroundColor;
+            pushToHistory(e.target, prevColor);
+            if (selectedColor == eraserColor) {
+                e.target.style.backgroundColor = eraserColor;
+                e.target.dataset.eraserApplied = true;
+            } else {
+                e.target.style.backgroundColor = selectedColor;
+                delete e.target.dataset.eraserApplied;
+            }
+        }
+        pixelCanvas.appendChild(pixelDiv);
+    }
+}
+
+sizes.forEach(function(size) {
+    document.getElementById(`size-${size}`).onclick = function() {
+        setCanvasSize(size);
+    };
+});
+
+setCanvasSize(16);
+
+saveButton.onclick = function() {
+    var size = Math.sqrt(pixelCanvas.childNodes.length);
+    var canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+
+    var pixels = document.getElementsByClassName('pixel');
+
+    for (var i = 0; i < pixels.length; i++) {
+        if (pixels[i].dataset.eraserApplied || pixels[i].style.backgroundColor == '') {
+            ctx.fillStyle = transparentColor;
+        } else {
+            ctx.fillStyle = pixels[i].style.backgroundColor;
+        }
+        ctx.fillRect(i % size, Math.floor(i / size), 1, 1);
+    }
+
+    var img = canvas.toDataURL('image/png');
+    var link = document.createElement('a');
+    link.download = 'my_pixel_art.png';
+    link.href = img;
+    link.click();
+};
+
+pixelCanvas.addEventListener('mousedown', function(e) {
+    isDrawing = true;
+    if (selectedColor == eraserColor) {
+        e.target.style.backgroundColor = eraserColor;
+        e.target.dataset.eraserApplied = true;
+    } else {
+        e.target.style.backgroundColor = selectedColor;
+        delete e.target.dataset.eraserApplied;
+    }
+});
+
+pixelCanvas.addEventListener('mousemove', function(e) {
+    if (isDrawing) {
+        var prevColor = e.target.style.backgroundColor;
+        pushToHistory(e.target, prevColor);
+        if (selectedColor == eraserColor) {
+            e.target.style.backgroundColor = eraserColor;
+            e.target.dataset.eraserApplied = true;
+        } else {
+            e.target.style.backgroundColor = selectedColor;
+            delete e.target.dataset.eraserApplied;
+        }
+    }
+});
+
+document.addEventListener('mouseup', function(e) {
+    isDrawing = false;
+});
+
+undoButton.onclick = function() {
+    if (actionHistory.length > 0) {
+        var lastAction = actionHistory.pop();
+        for (var i = lastAction.length - 1; i >= 0; i--) {
+            var change = lastAction[i];
+            if (change.color == '' || change.color == eraserColor) {
+                change.pixel.dataset.eraserApplied = true;
+            } else {
+                delete change.pixel.dataset.eraserApplied;
+            }
+            change.pixel.style.backgroundColor = change.color;
+            canvasHistory.pop();
+        }
+    }
+};
+
+var draggingBox = document.querySelector('.draggingbox');
+var paletteContainer = document.getElementById('palette-box');
+var dragStartX, dragStartY, paletteStartX, paletteStartY;
+
+draggingBox.addEventListener('mousedown', function(e) {
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    paletteStartX = paletteContainer.offsetLeft;
+    paletteStartY = paletteContainer.offsetTop;
+    paletteContainer.style.position = 'absolute';
+    paletteContainer.style.left = paletteStartX + 'px';
+    paletteContainer.style.top = paletteStartY + 'px';
+
+    function doDrag(e) {
+        paletteContainer.style.left = (paletteStartX + e.clientX - dragStartX) + 'px';
+        paletteContainer.style.top = (paletteStartY + e.clientY - dragStartY) + 'px';
+    }
+
+    function stopDrag() {
+        document.removeEventListener('mousemove', doDrag);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('mouseleave', stopDrag);
+    }
+
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+});
+
+var draggingChangeBox = document.querySelector('.draggingchangebox');
+var paletteLeftUp = document.querySelector('.palette-left-up');
+var paletteLeftDown = document.querySelector('.palette-left-down');
+var paletteLeft = document.querySelector('.palette-left');
+draggingChangeBox.onclick = function() {
+    var currentDirection = window.getComputedStyle(paletteContainer).getPropertyValue('flex-direction');
+    var currentDirectionLeftUp = window.getComputedStyle(paletteLeftUp).getPropertyValue('flex-direction');
+    var currentDirectionLeftDown = window.getComputedStyle(paletteLeftDown).getPropertyValue('flex-direction');
+    var currentDirectionLeft = window.getComputedStyle(paletteLeft).getPropertyValue('flex-direction');
+    if (currentDirection === 'row') {
+        paletteContainer.style.flexDirection = 'column';
+    } else {
+        paletteContainer.style.flexDirection = 'row';
+    }
+
+    if (currentDirectionLeftUp === 'row') {
+        paletteLeftUp.style.flexDirection = 'column';
+    } else {
+        paletteLeftUp.style.flexDirection = 'row';
+    }
+
+    if (currentDirectionLeftDown === 'row') {
+        paletteLeftDown.style.flexDirection = 'column';
+    } else {
+        paletteLeftDown.style.flexDirection = 'row';
+    }
+
+    if (currentDirectionLeft === 'row-reverse') {
+        paletteLeft.style.flexDirection = 'column';
+    } else {
+        paletteLeft.style.flexDirection = 'row-reverse';
+    }
+};
+
+</script>

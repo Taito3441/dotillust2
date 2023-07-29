@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T8NK7VV');</script>
+    <!-- End Google Tag Manager -->
+
+    <title>ドットの宝物庫</title>
+    <meta name="description" content="描く、使う、見る、投稿する全てが揃うドット絵専門総合フリー素材サイト。サイト内の素材は商用問わず全て無料でお使い頂けます。">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <script src="https://kit.fontawesome.com/25a737b8c3.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="dotfavicon.ico">
+    
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <meta name="turbolinks-visit-control" content="reload">
+<!--エンター押すと、次のフォーム行くやつ-->
+    <script type="text/javascript">
+      function autoTab(event, current, nextFieldID) {
+        if (event.keyCode === 13) {
+          event.preventDefault(); 
+          document.getElementById(nextFieldID).focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+<!------------------------------------>
+<!----------------グーグルアナリティクス-------------------->
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VH35H2FEF9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VH35H2FEF9');
+    </script>
+<!------------------------------------>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8NK7VV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="app">
+      <header>
+        <div class="header-list">
+          <%= link_to root_path do %>
+            <div class="title-imagecontainer">
+              <%= image_tag "dotillust_title_image.png", :size =>'150x45', :class => 'titleimage'%>
+            </div>
+          <% end %>
+          <!--ハンバーガーメニュー-->
+            <div class="menubutton" onclick="toggle()">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          <div class="menu">
+            <ul>
+              <li>
+                <%= link_to draw_illust_path do %>
+                  <div class="hamlists1">
+                    <%= image_tag "humdotdraw.png", class: "humlist1 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <div class="hamlists2">
+                    <%= image_tag "humtop.png", class: "humlist2 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_illust_path do %>
+                  <div class="hamlists3">
+                    <%= image_tag "humnew.png", class: "humlist3 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to illusts_path do %>
+                  <div class="hamlists4">
+                    <%= image_tag "humindex.png", class: "humlist4 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path do %>
+                  <div class="hamlists5">
+                    <%= image_tag "humcreindex.png", class: "humlist5 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to illusts_tagindex_path do %>
+                  <div class="hamlists6">
+                    <%= image_tag "humtagindex.png", class: "humlist6 fadein" %>
+                  </div>
+                <% end %>
+              </li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to user_path(current_user.id) do %>
+                    <div class="hamlists7">
+                      <%= image_tag "humstatus.png", class: "humlist7 fadein" %>
+                    </div>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <div class="hamlists 8">
+                      <%= image_tag "humrogout.png", class: "humlist8 fadein" %>
+                    </div>
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <div class="hamlists7">
+                      <%= image_tag "humrogin.png", class: "humlist7 fadein" %>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <script>
+            
+          $(function toggle(){
+            $('.menubutton').on('click', function toggle(){
+              $(this).toggleClass('active');
+              document.querySelector('.menubutton').classList.toggle('open');
+              document.querySelector('.menu').classList.toggle('open');
+              return false;
+            });
+          });
+        </script>
+      </header>
+      
+      <div class="vaundy">
+        <div class="sidebar">
+          <!--ハッシュタグみたいなタグ-->
+          <h3>タグリスト</h3>
+          <div class="taglist">
+            <% Tag.left_joins(:illusts).group(:id).order('COUNT(illusts.id) DESC').each do |tag| %>
+              <div class="tag-border">
+                #<%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id), class: "text-none" %>
+                <%= "(#{tag.illusts.count})" %>
+              </div>
+            <% end %>
+          </div>
+          <%= link_to draw_illust_path, class: "taitotyan" do %>
+          <% end %>
+        </div>
+        <main> 
+          <div class="view">
+            <%= yield %>
+          </div>
+        </main> 
+      </div>
+      <footer id="footer">
+        <div class="footer-content">
+          <a href="https://1link.jp/jaxya" target="_blank" rel="noopener noreferrer">企画者サイト</a>
+          <a href="https://twitter.com/Taitotto20" target="_blank" rel="noopener noreferrer">製作者twitter</a>
+          <br>
+          <br>
+          <p>Copyright © TaitoKoja All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+<!---------------------画像プレビュー機能------------------>
+    <script>
+      if (document.URL.match(/\/users\/sign_up|\/users\/edit/)){
+        document.addEventListener('DOMContentLoaded', () => {
+          const createUserImageHTML = (blob) => {
+            const imageElement = document.getElementById('new-user-image');
+            const blobImage = document.createElement('img');
+            blobImage.setAttribute('class', 'new-img')
+            blobImage.setAttribute('src', blob);
+            blobImage.style.width = '77px';
+            blobImage.style.height = '77px';
+            blobImage.style.borderRadius = '50%';
+            blobImage.style.position = 'relative';
+            blobImage.style.zIndex = '200';
+            blobImage.style.imageRendering = 'pixelated';
+
+            imageElement.appendChild(blobImage);
+            
+            const usercircleElements = document.getElementsByClassName('usercircle');
+            const fasolidElements = document.getElementsByClassName('fa-solid');
+            
+            for(let i = 0; i < usercircleElements.length; i++){
+              usercircleElements[i].style.display = 'none';
+            }
+            
+            for(let i = 0; i < fasolidElements.length; i++){
+              fasolidElements[i].style.display = 'none';
+            }
+          };
+      
+          document.getElementById('user_image').addEventListener('change', (e) => {
+            const imageContent = document.querySelector('#new-user-image img');
+            if (imageContent){
+              imageContent.remove();
+            }
+      
+            const file = e.target.files[0];
+            const blob = window.URL.createObjectURL(file);
+            createUserImageHTML(blob);
+          });
+
+            document.getElementById('new-user-image').addEventListener('click', () => {
+            document.getElementById('user_image').click();
+          });
+        });
+      }
+    </script>
+
+    <script>
+      if (document.URL.match(/\/illusts\/new|\/illusts\/\d+\/edit/)){
+        document.addEventListener('DOMContentLoaded', () => {
+          const createImageHTML = (blob) => {
+            const imageElement = document.getElementById('new-image');
+            const blobImage = document.createElement('img');
+            blobImage.setAttribute('class', 'new-img')
+            blobImage.setAttribute('src', blob);
+            blobImage.style.width = '480px';
+            blobImage.style.height = '480px';
+            blobImage.style.imageRendering = 'pixelated';
+            blobImage.style.boxShadow = '10px 10px 5px rgba(128, 128, 128, 0.3)';
+
+            imageElement.appendChild(blobImage);
+
+            const fasharpElements = document.getElementsByClassName('fa-sharp');
+            const iconcontainerElements = document.getElementsByClassName('icon-container');
+
+            for(let i = 0; i < fasharpElements.length; i++){
+              fasharpElements[i].style.display = 'none';
+            }
+            for(let i = 0; i < iconcontainerElements.length; i++){
+              iconcontainerElements[i].style.display = 'none';
+            }
+          };
+
+          document.getElementById('editillust-image').addEventListener('change', (e) => {
+            const imageContent = document.querySelector('#new-image img');
+            if (imageContent){
+              imageContent.remove();
+            }
+
+            const file = e.target.files[0];
+            const blob = window.URL.createObjectURL(file);
+
+            const img = new Image();
+            img.onload = function() {
+              if (this.width > 256 || this.height > 256) {
+                alert('他のドット絵を選択して下さい');
+                e.target.value = '';
+                const fasharpElements = document.getElementsByClassName('fa-sharp');
+                const iconcontainerElements = document.getElementsByClassName('icon-container');
+
+                for(let i = 0; i < fasharpElements.length; i++){
+                  fasharpElements[i].style.display = 'inline';
+                }
+                for(let i = 0; i < iconcontainerElements.length; i++){
+                  iconcontainerElements[i].style.display = 'flex';
+                }
+              } else {
+                createImageHTML(blob);
+              }
+            };
+            img.src = blob;
+          });
+
+          document.getElementById('new-image').addEventListener('click', () => {
+            document.getElementById('editillust-image').click();
+          });
+        });
+      }
+    </script>
+    <!--------------------------------------------------------->
+    <!---------------ステータス画面のフッターにぶつかったらスクロール止めるやつ------------------>
+    <script>
+      if (document.URL.match(/\/users\/\d+/)){
+          const userIcon = document.querySelector('.usericon-background');
+          const footerContent = document.querySelector('.footer-content');
+
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (window.innerWidth > 1300) { // 1300px以上の時だけJavaScriptを実行
+                      if (entry.isIntersecting) {
+                          userIcon.style.position = 'absolute';
+                          userIcon.style.bottom = '0';
+                          userIcon.style.top = 'auto';
+                      } else {
+                          userIcon.style.position = 'fixed';
+                          userIcon.style.bottom = 'auto';
+                          userIcon.style.top = '30vh'
+                      }
+                  }
+              });
+          });
+
+          observer.observe(footerContent);
+      }
+
+
+
+
+
+    </script>
+    <!--------------------------------------------------------->
+    <%# <script>
+      $(document).on('turbolinks:load', function() {
+          var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+          var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+          alert("Width: " + width + ", " + "Height: " + height);
+      });
+    </script> %>
+  </body>
+</html>

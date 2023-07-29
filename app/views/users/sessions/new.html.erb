@@ -1,0 +1,53 @@
+<div class="rogin_all">
+
+  <br>
+  <div class="rogin_image">
+    <%= image_tag "dot_rogin.png" %>
+  </div>
+
+  <br>
+
+  <div class="form-class">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+      <h2>メールアドレス</h2>
+      <div class="email_position">
+        <span class="email_form"><%= f.email_field :email, autofocus: true, autocomplete: "email", id: "input1", onkeydown: "return autoTab(event, this, 'input2')", :size=> "200x100", placeholder: "number1234@mail.com" %></span>
+      </div>
+
+      <br>
+
+      <h2>パスワード(６文字以上)</h2>
+      <div class="pass_position">
+        <span class="pass_form"><%= f.password_field :password, autocomplete: "current-password", id: "input2", onkeydown: "return autoTab(event, this, 'input3')", placeholder: "password123456" %></span>
+      </div>
+      <div class="passreset-container">
+        <%= link_to "パスワードを忘れましたか？", new_password_path(resource_name) , class: "rogin-link" %><br />
+      </div>
+<br>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="rogcheckbox">
+          <%= f.check_box :remember_me, checked: true, id: "input3", onkeydown: "return autoTab(event, this, 'input4')", class:"check-box1" %>
+          <h4>✔︎ログインしたままにする！</h4>
+        </div>
+      <% end %>
+<br>
+
+      <div class="actions">
+        <%= image_submit_tag('rogbutton.png', id: "input4") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="line-image-container">
+    <%= image_tag "dot_blueman.png", class: "line-image1" %>
+    <%= image_tag "dot_purpleman.png", class: "line-image2" %>
+    <hr class="horizontal-line">
+  </div>
+  
+  <%= render "users/shared/links" %>
+  
+</div>
+
+

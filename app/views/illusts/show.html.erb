@@ -1,0 +1,100 @@
+<div class="show-conteiner">
+    <h1>イラスト詳細</h1><br>
+    <div class="show-illust">
+        <div class="image-title-like-container">
+            <div class="showuser-container">
+                <div class="showuser-container2">
+                    <%= image_tag @illust.user.image_url, size: "120x120", alt: "ドット絵", class:"user6" if @illust.user.image? %>
+                    <span class="showusername"><%= @illust.user.name %></span>
+                </div>
+            </div>
+            <div class ="show-image-title-container">
+                <div class="image-container">
+                    <%= image_tag @illust.image_url, size: "480x480", class:"show-image" if @illust.image? %>
+                </div>
+                <div class="show-title"><%= @illust.titles %></div>
+            </div>
+            <div class="showbotton-container">
+                <div class="showbottoncontainer2">
+                    <div class="downloadclass"><%= button_to 'ダウンロード', '#', class: 'btn', data: { url: cl_image_path(@illust.image, flags: :attachment) } %></div>
+                    <div class="like-container">
+                        <% if user_signed_in? %>
+                            <% if current_user.already_liked?(@illust) %>
+                                <%= link_to illust_like_path(@illust), method: :delete do %>
+                                <%= image_tag("likeson.png", class: "likesbutton") %><span class="likecount"><%= @illust.likes.count %></span>
+                            <% end %>
+                            <% else %>
+                                <%= link_to illust_likes_path(@illust), method: :post do %>
+                                <%= image_tag("likesoff.png", class: "likesbutton") %><span class="likecount"><%= @illust.likes.count %></span>
+                            <% end %>
+                        <% end %>
+                        <% else %>
+                            <%= image_tag("likesoff.png", class: "likesbutton") %><span class="likecount"><%= @illust.likes.count %></span>
+                        <% end %>
+                    </div>
+                    <% if current_user&.admin? %>
+                        <%= link_to "イラストを削除する", illust_path(@illust), method: :delete, data: { confirm: 'Are you sure?' }, class: "illust-deletebtn" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <h2>タグ</h2>
+        <!--ハッシュタグ-->
+        <div class="showtaglist">
+            <% @illust_tags.each do |tag| %>
+                <% if tag.illusts.count > 0 %>
+                    <div class="tag-border">
+                        #<%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id), class: "text-none"%>
+                        <%= "(#{tag.illusts.count})" %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+        <!-------------->
+
+        <h2 class="likesuserstitle">いいねしたユーザー</h2>
+        <div class="likesusersboxs">
+        <% @illust.liked_users.each do |user| %>
+            <%= link_to user_path(user.id) do %>
+                <div class="likesusersbox">
+                    <%= image_tag user.image_url, size: "120x120", class: "user5" if user.image? %>
+                    <span class="likesusername"><%= user.name %></span>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+
+    <%= link_to "イラスト一覧に戻る", illusts_path, class: "illust-return" %>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click', function(event){
+            event.preventDefault();  // ここが重要です。デフォルトのリンク動作を停止します。
+            
+            let imageUrl = btn.dataset.url;  // ボタンのdata-url属性からURLを取得
+            
+            // a要素を生成
+            let element = document.createElement('a');
+            // a要素のhref属性を設定
+            element.href = imageUrl;
+            // a要素のtarget属性を設定
+            element.target = '_blank';
+            // a要素のクリック実行
+            element.click();
+        }, false);
+    });
+
+
+</script>
+<!--------右クリックでダウンロードできないコード--------->
+<script>
+const images = document.getElementsByClassName('show-image');
+
+for (let i = 0; i < images.length; i++) {
+    images[i].addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+}
+</script>

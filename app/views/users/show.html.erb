@@ -1,0 +1,136 @@
+
+<!-- マイページ-->
+
+<h1 class="status-titlestring">ステータス</h1>
+<div class="status-contant">
+    
+    <div class="usericon-background">
+        <%= image_tag @user.image_url, class: "usericon", size: "250x200", style: "image-rendering: pixelated;" if @user.image? %>
+        <span class="total_likes"><%= @total_likes %></span>
+    </div>
+    <div class="status-right">
+        <div class="namemailcontainer">
+            <div class="status-name"><%= @user.name %></div>
+            <div class="status-mail"><%= @user.email %></div>
+            <div class="status-profile"><%= @user.profile %></div>
+            
+        </div>
+        <div class="follow-edit-container">
+            <%= render 'stats' %>
+            <%= render 'follow_form' %>
+            
+            <% if current_user && current_user.id == @user.id %>
+                <%= link_to "編集する", edit_user_registration_path, class: "status-editbtn"%>
+            <% end %>
+            <% if current_user&.admin? && current_user != @user %>
+                <%= link_to "アカウントを削除する", user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: "status-deletebtn" %>
+            <% end %>
+        </div>
+        <div class="horizontal-line3-container">
+            <hr class="horizontal-line3">
+        </div>
+
+        <h2 class="statususerillusttitle">ユーザーの投稿一覧</h2>
+        <div class="statusillustsindex">
+            <% @user.illusts.each do |t| %>
+                <div class="statusillust">
+                    <%= image_tag t.image_url, size: "250x250", class: "hover-zoom", style: "image-rendering: pixelated;" if t.image? %>
+                    <div class="overlay"></div>
+                    <div class="hover-text">
+                        <%= link_to illust_path(t.id), class:"hover-text-titles" do %>
+                            <%= t.titles %>
+                        <% end %>
+                        <div class="hover-tag-container">
+                            <% t.tags.each do |tag| %>
+                                <% if tag.illusts.count > 0 %>
+                                    <%= link_to tag_illusts_path(tag_id: tag.id), class: "hover-tag-border" do %>
+                                    #<%= tag.tag_name %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="hover-pixel-like-container">
+                            <div class="hover-pixelsize-container">
+                                ピクセル:<%= t.pixels %>
+                            </div>
+                            <div class="hover-likes-container">
+                                <% if user_signed_in? %>
+                                    <% if current_user.already_liked?(t) %>
+                                        <%= link_to illust_like_path(id: t.id, illust_id: t.id), method: :delete do %>
+                                            <%= image_tag("likeson.png", class: "statuslikesbutton") %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= link_to illust_likes_path(id: t.id, illust_id: t.id), method: :post do %>
+                                            <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                                        <% end %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <% end %>
+        </div>
+
+        <!-- 以下はいいね機能を実装している場合-->
+        <h2 class="statuslikestitle">ユーザーがいいねした投稿一覧</h2>
+        <div class="statuslikeillustsindex">
+            <% @user.liked_illusts.each do |t| %>
+                <div class="statusillust">
+                    <%= image_tag t.image_url, size: "250x250", class: "hover-zoom" if t.image? %>
+                    <div class="overlay"></div>
+                    <div class="hover-text">
+                        <%= link_to illust_path(t.id), class:"hover-text-titles" do %>
+                            <%= t.titles %>
+                        <% end %>
+                        <div class="hover-tag-container">
+                            <% t.tags.each do |tag| %>
+                                <% if tag.illusts.count > 0 %>
+                                    <%= link_to tag_illusts_path(tag_id: tag.id), class: "hover-tag-border" do %>
+                                    #<%= tag.tag_name %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="hover-pixel-like-container">
+                            <div class="hover-pixelsize-container">
+                                ピクセル:<%= t.pixels %>
+                            </div>
+                            <div class="hover-likes-container">
+                                <% if user_signed_in? %>
+                                    <% if current_user.already_liked?(t) %>
+                                        <%= link_to illust_like_path(id: t.id, illust_id: t.id), method: :delete do %>
+                                            <%= image_tag("likeson.png", class: "statuslikesbutton") %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= link_to illust_likes_path(id: t.id, illust_id: t.id), method: :post do %>
+                                            <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                                        <% end %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+    
+
+<div class="illust-return-container">
+    <%= link_to "イラスト一覧に戻る", illusts_path, class: "illust-return" %>
+</div>
+
+
+
+
+
+
+
+

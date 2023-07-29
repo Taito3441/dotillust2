@@ -1,0 +1,162 @@
+<div class="imagebox"></div>
+<h2 class="monthlikeranking">月間いいねランキング</h2>
+<div id="carousel" class="slide-container">
+    <button id="prev">◀︎</button>
+    <% @monthly_ranks.each_slice(5).each_with_index do |rank_slice, slide_index| %>
+        <div class="slide <%= 'active' if slide_index.zero? %>">
+            <% rank_slice.each do |ranked_illust| %>
+                <div class="rank-box">
+                    <div class="top-illusts">
+                        <%= image_tag ranked_illust.illust.image_url, size: "200x200", class: "top-hover-zoom" if ranked_illust.illust.image? %>
+                        <div class="top-overlay"></div>
+                        <div class="top-hover-text">
+                            <%= link_to illust_path(ranked_illust.illust.id), class:"top-hover-text-titles" do %>
+                                <%= ranked_illust.illust.titles %>
+                            <% end %>
+                            <%= link_to user_path(ranked_illust.illust.user.id) do %>
+                                <div class="top-hover-uicon-container">
+                                    <%= image_tag ranked_illust.illust.user.image_url, size: "120x120",  class: "top-usericon" if ranked_illust.illust.user.image? %>
+                                    <span class="top-hover-username"><%= ranked_illust.illust.user.name %></span>
+                                </div>
+                            <% end %>
+                            <div class="top-hover-tag-container">
+                                <% ranked_illust.illust.tags.each do |tag| %>
+                                    <% if tag.illusts.count > 0 %>
+                                        <%= link_to tag_illusts_path(tag_id: tag.id), class: "top-hover-tag-border" do %>
+                                            #<%= tag.tag_name %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <div class="top-hover-pixel-like-container">
+                                <div class="top-hover-pixelsize-container">
+                                    ピクセル:<%= ranked_illust.illust.pixels %>
+                                </div>
+                                <div class="top-hover-likes-container">
+                                    <% if user_signed_in? %>
+                                        <% if current_user.already_liked?(ranked_illust.illust) %>
+                                            <%= link_to illust_like_path(id: ranked_illust.illust.id, illust_id: ranked_illust.illust.id), method: :delete do %>
+                                                <%= image_tag("likeson.png", class: "top-likesbutton") %>
+                                            <% end %>
+                                        <% else %>
+                                            <%= link_to illust_likes_path(id: ranked_illust.illust.id, illust_id: ranked_illust.illust.id), method: :post do %>
+                                                <%= image_tag("likesoff.png", class: "top-likesbutton") %>
+                                            <% end %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= image_tag("likesoff.png", class: "top-likesbutton") %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-rank-textcontainer">
+                        <%= ranked_illust.rank %>位
+                        <div class="rankspacebox"></div>
+                        <%= ranked_illust.monthly_likes %> likes
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+    <button id="next">▶︎</button>
+</div>
+
+<h2 class="totallikeranking">総合いいねランキング</h2>
+<div id="carousel2" class="slide-container">
+    <button id="prev2">◀︎</button>
+    <% @ranks.each_slice(5).each_with_index do |rank_slice, slide_index| %>
+        <div class="slide <%= 'active' if slide_index.zero? %>">
+            <% rank_slice.each do |ranked_illust| %>
+                <div class="rank-box">
+                    <div class="top-illusts">
+                        <%= image_tag ranked_illust.illust.image_url, size: "200x200", class: "top-hover-zoom" if ranked_illust.illust.image? %>
+                        <div class="top-overlay"></div>
+                        <div class="top-hover-text">
+                            <%= link_to illust_path(ranked_illust.illust.id), class:"top-hover-text-titles" do %>
+                                <%= ranked_illust.illust.titles %>
+                            <% end %>
+                            <%= link_to user_path(ranked_illust.illust.user.id) do %>
+                                <div class="top-hover-uicon-container">
+                                    <%= image_tag ranked_illust.illust.user.image_url, size: "120x120",  class: "top-usericon" if ranked_illust.illust.user.image? %>
+                                    <span class="top-hover-username"><%= ranked_illust.illust.user.name %></span>
+                                </div>
+                            <% end %>
+                            <div class="top-hover-tag-container">
+                                <% ranked_illust.illust.tags.each do |tag| %>
+                                    <% if tag.illusts.count > 0 %>
+                                        <%= link_to tag_illusts_path(tag_id: tag.id), class: "top-hover-tag-border" do %>
+                                        #<%= tag.tag_name %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <div class="top-hover-pixel-like-container">
+                                <div class="top-hover-pixelsize-container">
+                                    ピクセル:<%= ranked_illust.illust.pixels %>
+                                </div>
+                                <div class="top-hover-likes-container">
+                                    <% if user_signed_in? %>
+                                        <% if current_user.already_liked?(ranked_illust.illust) %>
+                                            <%= link_to illust_like_path(id: ranked_illust.illust.id, illust_id: ranked_illust.illust.id), method: :delete do %>
+                                                <%= image_tag("likeson.png", class: "top-likesbutton") %>
+                                            <% end %>
+                                        <% else %>
+                                            <%= link_to illust_likes_path(id: ranked_illust.illust.id, illust_id: ranked_illust.illust.id), method: :post do %>
+                                                <%= image_tag("likesoff.png", class: "top-likesbutton") %>
+                                            <% end %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= image_tag("likesoff.png", class: "top-likesbutton") %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-rank-textcontainer">
+                        <p><%= ranked_illust.rank %>位</p>
+                        <div class="rankspacebox"></div>
+                        <p><%= ranked_illust.illust.count_likes %> likes</p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+    <button id="next2">▶︎</button>
+</div>
+<!----カルーセル機能---->
+<script>
+    var slideIndex1 = 0;
+    var slides1 = document.querySelectorAll('#carousel .slide');
+    var container1 = document.querySelector('#carousel');
+
+    function showSlide(index, slides, container) {
+        slides.forEach((slide, i) => {
+            slide.style.display = i === index ? 'flex' : 'none';
+        });
+        container.scrollLeft = 0;
+    }
+    document.getElementById('prev').addEventListener('click', () => {
+        slideIndex1 = slideIndex1 > 0 ? slideIndex1 - 1 : slides1.length - 1;
+        showSlide(slideIndex1, slides1, container1);
+    });
+    document.getElementById('next').addEventListener('click', () => {
+        slideIndex1 = (slideIndex1 + 1) % slides1.length;
+        showSlide(slideIndex1, slides1, container1);
+    });
+    showSlide(slideIndex1, slides1, container1);
+
+    var slideIndex2 = 0;
+    var slides2 = document.querySelectorAll('#carousel2 .slide');
+    var container2 = document.querySelector('#carousel2');
+
+    document.getElementById('prev2').addEventListener('click', () => {
+        slideIndex2 = slideIndex2 > 0 ? slideIndex2 - 1 : slides2.length - 1;
+        showSlide(slideIndex2, slides2, container2);
+    });
+    document.getElementById('next2').addEventListener('click', () => {
+        slideIndex2 = (slideIndex2 + 1) % slides2.length;
+        showSlide(slideIndex2, slides2, container2);
+    });
+    showSlide(slideIndex2, slides2, container2);
+</script>

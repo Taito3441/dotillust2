@@ -1,0 +1,9 @@
+<h1>タグリスト</h1>
+  <div class="tagindex">
+    <% Tag.all.each do |tag| %>
+      <div class="tag-border">
+        #<%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id), class: "text-none" %>
+        <%= "(#{tag.illusts.count})" %>
+      </div>
+    <% end %>
+  </div>

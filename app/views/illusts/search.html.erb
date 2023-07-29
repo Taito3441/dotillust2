@@ -1,0 +1,51 @@
+
+<h2 class="search-illusts-title">タグ：<%= "#{@tag.tag_name}" %></h2>
+<br>
+<div class="searchillustindex">
+    <% @illusts.each do |t| %>
+        <div class="searchillusts">
+            <%= image_tag t.image_url, size: "250x250", class: "hover-zoom" if t.image? %>
+            <div class="overlay"></div>
+            <div class="hover-text">
+                <%= link_to illust_path(t.id), class:"hover-text-titles" do %>
+                    <%= t.titles %>
+                <% end %>
+                <%= link_to user_path(t.user.id) do %>
+                    <div class="hover-uicon-container">
+                        <%= image_tag t.user.image_url, size: "120x120",  class: "user4" if t.user.image? %>
+                        <span class="hover-username"><%= t.user.name %></span>
+                    </div>
+                <% end %>
+                <div class="hover-tag-container">
+                    <% t.tags.each do |tag| %>
+                        <% if tag.illusts.count > 0 %>
+                            <%= link_to tag_illusts_path(tag_id: tag.id), class: "hover-tag-border" do %>
+                            #<%= tag.tag_name %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="hover-pixel-like-container">
+                    <div class="hover-pixelsize-container">
+                        ピクセル:<%= t.pixels %>
+                    </div>
+                    <div class="hover-likes-container">
+                        <% if user_signed_in? %>
+                            <% if current_user.already_liked?(t) %>
+                                <%= link_to illust_like_path(id: t.id, illust_id: t.id), method: :delete do %>
+                                    <%= image_tag("likeson.png", class: "statuslikesbutton") %>
+                                <% end %>
+                            <% else %>
+                                <%= link_to illust_likes_path(id: t.id, illust_id: t.id), method: :post do %>
+                                    <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                                <% end %>
+                            <% end %>
+                        <% else %>
+                            <%= image_tag("likesoff.png", class: "statuslikesbutton") %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

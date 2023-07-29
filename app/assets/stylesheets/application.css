@@ -1,0 +1,364 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.image_form_contents_field {
+    display: none;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+body {
+    font-family: "A1明朝", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.app {
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-image: url('dotback2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    background-color: rgba(196, 196, 196, 0);
+    height: 7vh;
+    font-weight: bold;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 3px solid rgba(181, 181, 181, 0);
+}
+.header-list {
+    display: flex;
+}
+.title-imagecontainer {
+    width: 18vw;
+    height: 100%;
+    margin-left: 2vh;
+    border: rgba(0, 0, 0, 0);
+    border-style: solid;
+}
+.titleimage {
+    margin-top: 2%;
+    width: 100%;
+    height: auto;
+    background-size: contain;
+}
+/*------------ハンバーガーメニュー-------------*/
+/*------------メニューボタン-------------*/
+.menubutton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 7vh;
+    height: 7vh;
+    background: black;
+    cursor: pointer;
+    z-index: 1000;
+    margin: 1vw;
+    border-style: solid;
+    border-color: rgb(205, 0, 0);
+    border-width: 0.4vh;
+    border-radius: 50%;
+    transition-duration: 0.3s; 
+}
+.menubutton:hover {
+    border-color: rgb(0, 0, 0);
+    background: rgb(205, 0, 0);
+}
+.menubutton.active {
+    animation: active-menu12 .4s .25s forwards;
+}
+@keyframes active-menu12 {
+0% {
+    border-width: 0.7vh;
+    border-color: transparent;
+    transform: rotate(0);
+}
+25% {
+    border-color: transparent #ffffff transparent transparent;
+}
+50% {
+    border-color: transparent #ffffff #ffffff transparent;
+}
+75% {
+    border-color: transparent #ffffff #ffffff #ffffff;
+}
+100% {
+    border-width: 0.7vh;
+    border-color: #ffffff;
+    transform: rotate(-720deg);
+}
+}
+.menubutton i {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 4vh;
+    height: 0.5vh;
+    background: white;
+    transition: all .5s
+    
+}
+.menubutton i:first-child {
+    top: 35%;
+}
+.menubutton i:nth-child(2) {
+    top: 50%;
+}
+.menubutton i:last-child {
+    top: 65%;
+}
+.menubutton.open i:first-child {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+.menubutton.open i:nth-child(2) {
+    opacity: 0;
+}
+.menubutton.open i:last-child {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+/* メニュー */
+.menu {
+    position: fixed;
+    top: 6vw;
+    right: -100vw;
+    width: 25vw;
+    height: 68vh;
+    background: rgba(103, 103, 103, 0);
+    z-index: 1000;
+}
+@media screen and (max-width: 1300px) {
+    .menu {
+        top: 11vh;
+    }
+}
+.menu ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+}
+.menu li {
+    text-align: center;
+    transform: translateX(500%);
+    opacity: 1;
+    transition: all .3s;
+}
+.menu.open {
+    right: 1vw;
+}
+@media screen and (max-width: 1300px) {
+    .menu.open {
+        right: 10vw;
+    }
+}
+@media screen and (max-width: 950px) {
+    .menu.open {
+        right: 25vw;
+    }
+}
+@media screen and (max-width: 660px) {
+    .menu.open {
+        right: 50vw;
+    }
+}
+@media screen and (max-width: 470px) {
+    .menu.open {
+        right: 65vw;
+    }
+}
+.menu.open li {
+    transform: translateX(0%);
+    opacity: 1;
+}
+.menu.open li:first-child {
+    transition-delay: .1s;
+}
+.menu.open li:nth-child(2) {
+    transition-delay: .15s;
+}
+.menu.open li:nth-child(3) {
+    transition-delay: .2s;
+}
+.menu.open li:nth-child(4) {
+    transition-delay: .25s;
+}
+.menu.open li:nth-child(5) {
+    transition-delay: .3s;
+}
+.menu.open li:nth-child(6) {
+    transition-delay: .35s;
+}
+.menu.open li:nth-child(7) {
+    transition-delay: .4s;
+}
+.menu.open li:nth-child(8) {
+    transition-delay: .45s;
+}
+.menu.open li:first-child:hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(2):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(3):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(4):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(5):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(6):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(7):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+.menu.open li:nth-child(8):hover {
+    animation: rotate-change 0.01s infinite alternate;
+}
+@keyframes rotate-change {
+    0% { transform: rotate(-0.3deg); }
+    100% { transform: rotate(0.3deg); }
+}
+.fadein {
+    position: static;
+    width: 45vh;
+    height: auto;
+    transform: translateX(-2%);
+    margin-bottom: 1vh;
+}
+/*----------------------------------------*/
+.vaundy {
+    display: flex;
+    width: 100vw;
+}
+    /*------------サイドバーのコード-------------*/
+.sidebar {
+    box-sizing: border-box;
+    border-width: 2px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    
+    width: 13.5vw;
+    height: 93vh;
+}
+@media screen and (max-width: 1300px) {
+    .sidebar {
+        display: none;
+    }
+}
+.taglist {
+    display: flex;
+    height: 80%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    align-items: flex-start;
+}
+.tag-border {
+    margin-left: 1px;
+    margin-bottom: 2px;
+    padding: .6em;
+    height: 15px;
+    width: auto;
+    line-height: 1;
+    color: #0000ee;
+    background-color: #fff;
+    border: 1.5px solid #0000ee;
+    border-radius: 2em;
+    transition: all 0.3s;
+    flex-shrink: 0; 
+}
+.tag-border:hover {
+    color: #ffffff;
+    background-color: #48ff4e;
+    border: 1.5px solid #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #3651ff;
+}
+.text-none {
+    text-decoration: none;
+}
+.taitotyan {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 20%;
+    background-image: url('redbox.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.taitotyan:hover {
+    background-image: url('redboxopen.png');
+}
+/*----------------------------------------*/
+.view {
+    width: 86.5vw;
+    box-sizing: border-box;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    flex: 1;
+}
+@media screen and (max-width: 1300px) {
+    .view {
+        display: flex;
+        width: 100vw;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+    }
+}
+main {
+    
+    min-height: 100vh;
+}
+.footer-content {
+    border-top: #000;
+    border-width: 5vh;
+    color: #212529;
+    text-align: center;
+    padding: 60px 0;
+    width: 100%;
+    background: radial-gradient(#fff 40%, rgb(161, 161, 161));
+}
+.user3 {
+    border: 2px solid ;
+    border-radius: 100%;
+    width:  50px;
+    height: 50px;
+    bottom: 0
+}
+.user4 {
+    border-radius: 100%;
+    width:  40px;
+    height: 40px;
+    transition: all 1s;
+}

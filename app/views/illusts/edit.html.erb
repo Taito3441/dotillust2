@@ -1,0 +1,36 @@
+<h1>編集ページ</h1>
+<%= form_for @illust do |f| %>
+<div class="edit-all">
+    
+    <div class="edit-image">
+        <label class="edit-image-text">イラスト画像</label><br>
+        
+        <%= f.file_field :image, id: "editillust-image", style: "display: none;" %>
+        
+        <label for="editillust-image">
+            <div class="icon-container">
+                <i class="fa-sharp fa-solid fa-image fa-10x"></i>
+            </div>
+        </label>
+        <div id="new-image"></div>
+    </div>
+    <div class="edit-title">
+        <label class="edittitlelabel" >タイトル</label><br>
+        <%= f.text_field :titles, :class => "edittitle-field" %> 
+    </div>
+
+
+    <div class="edit-tag">
+        <label class="edittaglabel">タグ (スペースで区切ると複数タグ登録できます)</label>
+        <br>
+        <%= f.text_field :tag_name, value: @tag_list,class:"edittag-field", placeholder: "タグ1 タグ2 タグ3"%>
+    </div>
+
+
+
+    <%= f.submit "編集する", class: 'edit-button' %>
+
+</div>
+<% end %>
+
+

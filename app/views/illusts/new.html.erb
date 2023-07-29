@@ -1,0 +1,30 @@
+<h3>新規投稿ページ</h3>
+<%= form_with(model: @illust, url: illusts_path, local: true) do |f| %>
+
+<div class="new-all">
+    <!---------------画像プレビュー機能------------->
+    <div class="form-group">
+        <h3 class="newillust-title">イラスト画像</h3><br>
+        <%= f.file_field :image, id: "editillust-image", style: "display: none;" %>
+    </div>
+    <label for="editillust-image">
+        <div class="icon-container">
+            <i class="fa-sharp fa-solid fa-image fa-10x"></i>
+        </div>
+    </label>
+    <div id="new-image" ></div>
+    <!--------------------------------------------->
+    <div class="newtitles">
+        <h2 class="newtitle" >イラスト投稿タイトル</h2>
+        <%= f.text_field :titles, :class => "newtitle-field", placeholder: "タイトル" %>
+    </div>
+    <div class="newtags">
+        <div class="nwetag">タグ</div>
+        <%= f.text_field :tag_name,class:"newtag-field", placeholder: "タグ1 タグ2 タグ3" %>
+    </div>
+    <div class="pixelposition">
+        <%= f.select :pixels, [["16*16", "16*16"], ["32*32", "32*32"], ["64*64", "64*64"], ["96*96", "96*96"]], include_blank: "ピクセルサイズ", class: 'custom-select' %>
+    </div>
+    <%= f.submit "投稿する", class: 'new-button' %>
+    <% end %>
+</div>

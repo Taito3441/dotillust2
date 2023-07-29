@@ -1,0 +1,18 @@
+<!-- マイページのフォローフォロワー数の表示-->
+
+<% @user ||= current_user %>
+<div class="stats-follow">
+    <a href="<%= following_user_path(@user) %>" class="following-link">
+        <strong id="following" class="stat">
+            <%= @user.followings.count %>
+        </strong>
+        フォロー
+    </a>
+    <div class="follow-block"></div>
+    <a href="<%= followers_user_path(@user) %>" class="follower-link">
+        <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+        </strong>
+        フォロワー
+    </a>
+</div>

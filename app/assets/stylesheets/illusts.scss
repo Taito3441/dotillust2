@@ -1,0 +1,1117 @@
+// Place all the styles related to the illusts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*------------------トップページ----------------------*/
+.imagebox {
+    height: 46vw;
+    width: 85vw;
+    background-image:  url(dotmainad.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.totallikeranking {
+    margin-top: 5vh;
+}
+.slide-container {
+    display: flex;
+    overflow: hidden; 
+    width: 98%;
+    margin-bottom: 5vh;
+}
+#prev {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#next {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#prev:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+    background-color: rgba(0, 0, 0, 1);
+}
+#next:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+    background-color: rgba(0, 0, 0, 1);
+}
+#prev2 {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#next2 {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#prev2:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+    background-color: rgba(0, 0, 0, 1);
+}
+#next2:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+    background-color: rgba(0, 0, 0, 1);
+}
+.rankspacebox {
+    width: 1vw;
+}
+.slide {
+    display: none; 
+    flex: 1;
+    display: flex; 
+    justify-content: space-around; 
+}
+
+.rank-container2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.rank-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top-rank-textcontainer {
+    display: flex;
+    font-weight: bold;
+}
+.top-illusts {
+    margin: 5px;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    image-rendering: pixelated;
+}
+.top-hover-zoom {
+    image-rendering: pixelated;
+    display: block;
+    position: relative;
+    z-index: 100;
+    transition: transform .2s;
+}
+.top-illusts:hover .top-hover-zoom {
+    transform: scale(1.1); 
+}
+.top-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    z-index: 150;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.top-illusts:hover .top-overlay {
+    opacity: 1;
+}
+.top-hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.top-illusts:hover .top-hover-text {
+    opacity: 1;
+}
+.top-hover-text-titles {
+    width: 200px;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    flex-grow: 1;
+    text-shadow: 2px 2px 2px #000000; 
+    transition: all 1s;
+}
+.top-hover-text-titles:hover {
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.top-illusts a {
+    text-decoration: none;
+}
+.top-hover-uicon-container {
+    display: flex;
+    margin-top: 1.6px;
+    width: 200px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.top-hover-username {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    text-shadow: 0 0 1px #ffffff;
+    transition: all 1s;
+}
+.top-hover-uicon-container:hover .top-usericon {
+    box-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.top-hover-uicon-container:hover .top-hover-username {
+    text-shadow: 0 0 5px #48ff4e;
+}
+.top-hover-tag-container {
+    display: flex;
+    margin-top: 3%;
+    width: 200px;
+    max-height: 72px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+}
+.top-hover-tag-border {
+    font-weight: bold;
+    color: #5136ff;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px #000000; 
+}
+.top-hover-tag-border:hover {
+    text-decoration: underline;
+    text-decoration-color: #3651ff;
+}
+.top-hover-pixel-like-container {
+    width: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.top-hover-pixelsize-container {
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+}
+.top-hover-likes-container {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 0, 1%;
+}
+.top-likesbutton {
+    width: 4vh;
+    height: auto;
+    transform: translateX(-10%);
+}
+.top-usericon {
+    border-radius: 100%;
+    width:  35px;
+    height: 35px;
+    transition: all 1s;
+}
+/*--------------------------------------------------*/
+/*------------------インデックス----------------------*/
+.indexmaintitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 2vw;
+    margin-bottom: 2vh;
+}
+.indexseachposition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.indexsearchtitle {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+}
+.search-field {
+    width: 16vw;
+    height: 3vh;
+    font-size: 2vh;
+}
+.fa-solid.fa-magnifying-glass.fa-2x {
+    color: rgb(255, 255, 255);  /* 通常時の色を定義 */
+    transition: color 1s;  /* カラー変化のアニメーション */
+}
+.fa-solid.fa-magnifying-glass.fa-2x:hover {
+    color: rgb(0, 0, 0);  /* ホバー時の色を定義 */
+}
+.rounded-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;  
+    padding: 10px; 
+    background-color: #000000;
+    transition: all 0.3s;
+}
+.rounded-button:before {
+    content: "";
+    position: absolute;
+    top: -1700%;  /* 元の位置を調整 */
+    left: -1700%; /* 元の位置を調整 */
+    width: 3500%; /* 元の大きさを調整 */
+    height: 3500%; /* 元の大きさを調整 */
+    background: linear-gradient(
+        -45deg,
+        transparent 49%,
+        #00ff1a 49%,
+        #00ff1a 51%,
+        transparent 51%
+    );
+    transform-origin: center;
+    transform: scaleX(0.1); /* 最初は細い線 */
+    opacity: 0; /* 初期状態では見えないように設定 */
+    transition: transform 1s, opacity 1s; /* opacityの変化速度を早く */
+}
+.rounded-button:hover:before {
+    transform: scaleX(1); /* ホバー時に線を太くする */
+    opacity: 1; /* ホバー時に斜線を見えるようにする */
+}
+.sort-link {
+    font-weight: bold;
+    color: #0000ee;
+    margin-right: 1.5vh;
+    text-shadow: 1px 1px 0.5px#ffffff;
+}
+.sort-link:hover {
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 0.5px#ffffff;
+}
+.active-sort {
+    font-weight: bold;
+    color: #000000;
+    margin-right: 1vh;
+    text-shadow: 1px 1px 0.5px#ffffff;
+}
+.entries-info {
+    display: none;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000; /* 文字色 */
+    border: 1px solid #ffffff; /* ボーダー */
+    width: 20px;
+    height: 20px;
+    margin: 1vw;
+    text-decoration: none; /* テキストの装飾を無効化 */
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+.page:hover {
+    background-color: #9b9b9b; /* ホバー時の背景色 */
+}
+.pagination .current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000; /* 現在のページの背景色 */
+    color: #ffffff; /* 現在のページの文字色 */
+    border-radius: 50%;
+    font-weight: bold;
+}
+.page a {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.next .previous {
+    color: #000000; /* 次/前のページへのリンクの文字色 */
+    font-weight: bold;
+    margin-left: 1vw;
+    text-decoration: none;
+}
+.translation_missing {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    margin-left: 1vw;
+    transition: all 0.3s;
+}
+.translation_missing:hover {
+    color: rgb(120, 120, 120);
+}
+.illust-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.illustindex-container {
+    width: 20vw;
+    max-height: 50vh;
+    min-height: 30vh;
+    margin: 1vh;
+    background-color: #de9dff31;
+}
+.indexcontainer1 {
+    top: 0;
+    width: 100%;
+    height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user8 {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 5px;
+    transition: all 1s;
+    transform: translateY(10%);
+}
+.indexusername {
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    transition: all 1s;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+.indexcontainer2 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    image-rendering: pixelated;
+}
+.indexillusttitle {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    text-shadow: 1px 1px 1px #ffffff;
+}
+.indexcontainer4 {
+    width: 100%;
+    max-height: 13%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.indextag-border {
+    margin: 0 .1em .2em 0;
+	padding: .6em;
+    height: 15px;
+    width: auto;
+	line-height: 1;
+	color: #0000ee;
+	background-color: #fff;
+	border: 1px solid #0000ee;
+    border-radius: 2em;
+    flex-shrink: 0; 
+}
+.indextag-border:hover {
+    color: #ffffff;
+    background-color: #48ff4e;
+    border: 1.5px solid #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #3651ff;
+}
+.indexcontainer3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.indexlikesbutton {
+    width: 4vh;
+    height: auto;
+}
+
+
+.indexpixels {
+    font-weight: bold;
+    margin-right: 3px;
+}
+.indexcontainer5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    flex-grow: 1;
+}
+
+.text-none {
+    text-decoration: none;
+}
+.indexcontainnerbox {
+    width: 10%;
+}
+.indexeditbutton {
+    font-weight: bold;
+    width: 6vw;
+    text-decoration: none;
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 2em;
+    color: #05ff1a;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 0.5px#000000;
+}
+.indexdelete {
+    font-weight: bold;
+    width: 6vw;
+    text-decoration: none;
+    border: #ff0000;
+    border-style: solid;
+    border-radius: 2em;
+    color: #ff0000;
+    background-color: #b3b3b363;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 0.5px#000000;
+}
+.indextaglisttitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 2vh;
+}
+.indextagindex {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+/*--------------------作品詳細ページ-----------------------*/
+.image-title-like-container {
+    display: flex;
+    width: 100%;
+}
+.showuser-container {
+    width: 30%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.showuser-container2 {
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.user6 {
+    border-radius: 100%;
+    width:  70px;
+    height: 70px;
+    transition: all 1s;
+    image-rendering: pixelated;
+}
+.showuser-container2:hover .user6 {
+    box-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.showusername {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    margin-left: 1vw;
+}
+.showuser-container2:hover .showusername {
+    text-shadow: 0 0 20px #48ff4e;
+}
+.show-image-title-container {
+    width: 40%;
+    height: 70vh;
+}
+.showbotton-container {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.showbottoncontainer2 {
+    margin: auto;
+}
+.image-container {
+    justify-content: center;
+    text-align: center;
+}
+.show-image {
+    box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.3), -1px -1px 10px rgba(128, 128, 128, 0.3);
+    image-rendering: pixelated;
+}
+.show-title {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bolder;
+    color: rgb(51, 51, 51);
+    margin: 3vh;
+}
+
+.like-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+} 
+
+.likesbutton {
+    width: 5vh;
+    height: auto;
+    margin: 5px;
+}
+.likecount {
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.downloadclass {
+    margin: 5px;
+}
+.btn {
+    background-color: #ff1e1e; 
+    border: none; 
+    color: white; 
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 2em;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10vh 2px;
+    cursor: pointer;
+    transition-duration: 0.8s; 
+}
+
+.btn:hover {
+    background-color: #fdc52c;
+}
+.showtaglist {
+    display: flex;
+    min-height: 7vh
+}
+.likesuserstitle {
+    font-size: 25px;
+    font-weight: bold;
+}
+.likesusersboxs {
+    display: flex;
+    margin-bottom: 3vh;
+}
+.likesusersbox {
+    width: 11vw;
+    height: 20vh;
+    margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgb(255, 255, 255) 10px,
+    rgb(255, 255, 255) 20px
+    );
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+}
+.user5 {
+    border-radius: 100%;
+    width:  100px;
+    height: 100px;
+    transition: all 1s;
+    image-rendering: pixelated;
+}
+.likesusername {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(51, 51, 51);
+    text-shadow: 3 3 10px #adadad;
+    transition: all 1s;
+}
+.likesusersbox:hover .user5 {
+    box-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.likesusersbox:hover .likesusername {
+    text-shadow: 0 0 10px #48ff4e;
+}
+/*--------------------------------------------------*/
+/*-----------------------新規投稿ページ-----------------------*/
+.new-all {
+    text-align: center;
+}
+.newillust-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+.newtitles {
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+}
+.newtitle {
+    font-size: 20px;
+}
+.newtitle-field {
+    width: 20vw;
+    height: 5vh;
+    font-size: 3vh;
+    color: rgb(51, 51, 51);
+    text-align: center; 
+    font-weight: bold;
+}
+.newtags {
+    margin-bottom: 2vh;
+}
+.nwetag {
+    font-size: large;
+    font-weight: bold;
+}
+.newtag-field {
+    width: 20vw;
+    height: 3vh;
+    font-size: 2vh;
+    text-align: center; 
+    font-weight: bold;
+}
+.pixelposition {
+    margin-bottom: 1vh;
+}
+
+.custom-select {
+    
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    color: #495057;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.new-button {
+    width: 10vw;
+    height: 10vh;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 2em;
+    background-color: #007BFF; /* ボタンの元の色 */
+    color: white; /* 文字の色 */
+    transition: background-color 0.3s; /* 色が変わる速度 */
+    margin: 10px;
+    animation: color-change 4s infinite alternate;
+}
+
+.new-button:hover {
+    background-color: #ffffff; /* ボタンの色（ホバー時） */
+    color: #007BFF;
+}
+@keyframes color-change {
+    0% { border-color: rgb(255, 0, 0); }
+    10% { border-color: rgb(255, 0, 153); }
+    20% { border-color: rgb(204, 0, 255); }
+    30% { border-color: rgb(51, 0, 255); }
+    40% { border-color: rgb(0, 102, 255); }
+    50% { border-color: rgb(0, 255, 255); }
+    60% { border-color: rgb(0, 255, 102); }
+    70% { border-color: rgb(51, 255, 0); }
+    80% { border-color: rgb(204, 255, 0); }
+    90% { border-color: rgb(255, 153, 0); }
+    100% { border-color: rgb(255, 0, 0); }
+}
+/*--------------------------------------------------*/
+/*---------------------編集ページ--------------------------*/
+.edit-all {
+    text-align: center;
+}
+.icon-container {
+    display: flex;
+    width: 480px;
+    height: 480px;
+    border: #0000ee;
+    border-style: solid;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.3);
+}
+
+.edittitlelabel {
+    font-size: 20px;
+    font-weight: bold;
+}
+.edittitle-field {
+    width: 15vw;
+    height: 5vh;
+    font-size: 20px;
+    text-align: center; 
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+}
+.edit-image-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+.edittaglabel {
+    font-size: 20px;
+    font-weight: bold;
+}
+.edittag-field {
+    width: 25vw;
+    height: 3vh;
+    font-size: 17px;
+    text-align: center;
+    color: #3d3d8e;
+}
+.edit-button {
+    width: 10vw;
+    height: 10vh;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 2em;
+    background-color: #007BFF; /* ボタンの元の色 */
+    color: white; /* 文字の色 */
+    transition: background-color 0.3s; /* 色が変わる速度 */
+    margin: 10px;
+    animation: color-change 4s infinite alternate;
+}
+
+.edit-button:hover {
+    background-color: #ffffff; /* ボタンの色（ホバー時） */
+    color: #007BFF;
+}
+@keyframes color-change {
+    0% { border-color: rgb(255, 0, 0); }
+    10% { border-color: rgb(255, 0, 153); }
+    20% { border-color: rgb(204, 0, 255); }
+    30% { border-color: rgb(51, 0, 255); }
+    40% { border-color: rgb(0, 102, 255); }
+    50% { border-color: rgb(0, 255, 255); }
+    60% { border-color: rgb(0, 255, 102); }
+    70% { border-color: rgb(51, 255, 0); }
+    80% { border-color: rgb(204, 255, 0); }
+    90% { border-color: rgb(255, 153, 0); }
+    100% { border-color: rgb(255, 0, 0); }
+}
+/*--------------------------------------------------*/
+/*--------------------タグインデックス--------------------------*/
+.tagindex {
+    display: flex;
+    flex-wrap: wrap;
+}
+/*--------------------------------------------------*/
+/*--------------------タグ作品の一覧---------------------------*/
+.search-illusts-title {
+    margin: 3vh;
+    font-size: 7vh;
+}
+.searchillustindex {
+    min-height: 15vh;
+    margin-bottom: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.searchillusts {
+    margin: 5px;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    image-rendering: pixelated;
+}
+.hover-zoom {
+    image-rendering: pixelated;
+    display: block;
+    position: relative;
+    z-index: 100;
+    transition: transform .2s;
+}
+.searchillusts:hover .hover-zoom {
+    transform: scale(1.1); 
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    z-index: 150;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.searchillusts:hover .overlay {
+    opacity: 1;
+}
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.searchillusts:hover .hover-text {
+    opacity: 1;
+}
+.hover-text-titles {
+    width: 250px;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    flex-grow: 1;
+    text-shadow: 2px 2px 2px #000000; 
+    transition: all 1s;
+}
+.hover-text-titles:hover {
+    text-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.searchillusts a {
+    text-decoration: none;
+}
+.hover-uicon-container {
+    display: flex;
+    margin-top: 2px;
+    width: 250px;
+    height: auto;
+    justify-content: center;
+}
+.hover-username {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(51, 51, 51);
+    text-shadow: 0 0 1px #ffffff;
+    transition: all 1s;
+}
+.hover-uicon-container:hover .user4 {
+    box-shadow: 0 0 10px #48ff4e, 0 0 20px #48ff4e, 0 0 30px #48ff4e, 0 0 40px #48ff4e;
+}
+.hover-uicon-container:hover .hover-username {
+    text-shadow: 0 0 5px #48ff4e;
+}
+.hover-tag-container {
+    display: flex;
+    margin-top: 3%;
+    width: 250px;
+    max-height: 90px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+}
+.hover-tag-border {
+    font-weight: bold;
+    color: #5136ff;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px #000000; 
+}
+.hover-tag-border:hover {
+    text-decoration: underline;
+    text-decoration-color: #3651ff;
+}
+.hover-pixel-like-container {
+    width: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.hover-pixelsize-container {
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+}
+.hover-likes-container {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 0, 1%;
+}
+.statuslikesbutton {
+    width: 5vh;
+    height: auto;
+    transform: translateX(-10%);
+}
+/*--------------------------------------------------*/
+
+/*------------------------！！！！！！！！！描画ページ！！！！！！！--------------------------*/
+.all-draw-position {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.canvasposition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 340px;
+    width: 340px;
+}
+#pixel-canvas {
+    display: grid;
+    border-color: black;
+    gap: 0.01px;
+    width: 320px;
+    height: 320px;
+    margin: auto;
+}
+.palette-container {
+    display: flex;
+    align-items: center;
+    height: 15vh;
+}
+#palette-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1vh;
+    border: rgb(143, 143, 143) solid;
+    background-color: rgb(89, 89, 89);
+}
+.palette-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.palette-right-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.palette-right-down {
+    display: flex;
+}
+.palette-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.palette-left-up {
+    display: flex;
+    flex-direction: row;
+}
+.palette-left-down {
+    display: flex;
+    flex-direction: row;
+}
+.draggingbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: #0000ee solid;
+    margin: 6px;
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+.draggingbox:hover {
+    cursor: pointer;
+    border: #00ee0c solid;
+}
+.draggingchangebox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: #0000ee solid;
+    margin: 6px;
+    border-radius: 50%;
+    transition: all 1s;
+}
+.draggingchangebox:hover {
+    border: #00ee0c solid;
+}
+.color-picker {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+    border: 2px solid transparent;
+    margin-bottom: 1vh;
+    background-color: #ffffff;
+}
+#eraser-btn {
+    margin: 3px;
+}
+#undo-btn {
+    margin: 3px;
+}
+#canvas-size {
+    display: flex;
+}
+#canvas-size button {
+    margin: 5px;
+    margin-bottom: 2vh;
+}
+.savebtnposition {
+    margin-bottom: 4vh;
+}
+#save-btn {
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.tyuuicontainer {
+    display: flex;
+}
+.redtyuui {
+    color: rgb(255, 0, 0);
+}
+.pixel {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 0.01px solid #000;
+}
+/*--------------------------------------------------*/
