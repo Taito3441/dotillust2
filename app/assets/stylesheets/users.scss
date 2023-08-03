@@ -9,15 +9,11 @@
 }
 .name_position {
     position: relative;
-    
-    justify-content: center;
-    
 }
 .nametext {
     width: 30vw;
     height: 3vw;
-    font-size: 30px;
-    
+    font-size: 2.5vw;
 }
 .horizontal-line2 {
     top: 100%;
@@ -162,7 +158,7 @@ input[type="email"] {
     height: 3vw;
     margin-left: 22%;
     margin-bottom: 1.5%;
-    font-size: 30px;
+    font-size: 2.5vw;
 }
 
 input[type="password"] {
@@ -170,7 +166,7 @@ input[type="password"] {
     height: 3vw;
     margin-left: 22%;
     margin-bottom: 1.5%;
-    font-size: 30px;
+    font-size: 2.5vw;
 }
 .check-box1 {
     width: 5vh;
@@ -341,7 +337,7 @@ input[type="password"] {
     text-decoration: none; 
     border-radius: 2em;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.3vw;
     font-weight: bold;
     margin-left: 2vw;
     cursor: pointer;
@@ -359,6 +355,7 @@ input[type="password"] {
 .following-link {
     text-decoration: none;
     color: #000000;
+    font-size: 1.2vw;
     font-weight: bold;
     border: #000000;
     border-style: solid;
@@ -372,6 +369,7 @@ input[type="password"] {
 .follower-link {
     text-decoration: none;
     color: #000000;
+    font-size: 1.2vw;
     font-weight: bold;
     border: #000000;
     border-style: solid;
@@ -394,7 +392,7 @@ input[type="password"] {
     text-align: center; 
     text-decoration: none; 
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.3vw;
     font-weight: bold;
     margin-left: 15vw;
     cursor: pointer;
@@ -430,8 +428,8 @@ input[type="password"] {
     }
 }
 .statususerillusttitle {
-    margin-top: 5vh;
-    margin-bottom: 1vh;
+    margin-top: 2.5vw;
+    margin-bottom: 0.5vw;
 }
 .statusillustsindex {
     min-height: 15vh;
@@ -442,17 +440,19 @@ input[type="password"] {
     justify-content: center;
 }
 .statuslikestitle {
-    margin: 5vh;
-    margin-bottom: 1vh;
+    margin-top: 2.5vw;
+    margin-bottom: 0.5vw;
 }
 
 .statusillust {
-    margin: 5px;
+    margin: 0.5vw;
     position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
     overflow: hidden;
+    width: 15vw;
+    height: 15vw;
 }
 
 .hover-zoom {
@@ -469,8 +469,8 @@ input[type="password"] {
     position: absolute;
     top: 0;
     left: 0;
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 15vw;
     z-index: 150;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%);
     opacity: 0;
@@ -483,8 +483,8 @@ input[type="password"] {
     position: absolute;
     top: 0;
     left: 0;
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 15vw;
     z-index: 200;
     opacity: 0;
     transition: opacity .3s;
@@ -496,9 +496,9 @@ input[type="password"] {
     opacity: 1;
 }
 .hover-text-titles {
-    width: 250px;
+    width: 15vw;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 1.9vw;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
@@ -518,7 +518,7 @@ input[type="password"] {
 }
 .hover-tag-container {
     display: flex;
-    width: 250px;
+    width: 15vw;
     height: auto;
     align-items: center;
     justify-content: center;
@@ -527,16 +527,17 @@ input[type="password"] {
 }
 .hover-tag-border {
     font-weight: bold;
+    font-size: 1.2vw;
     color: #5136ff;
     text-decoration: none;
-    text-shadow: 2px 2px 2px #000000; 
+    text-shadow: 1px 1px 2px #ffffff; 
 }
 .hover-tag-border:hover {
     text-decoration: underline;
     text-decoration-color: #3651ff;
 }
 .hover-pixel-like-container {
-    width: 250px;
+    width: 15vw;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -544,6 +545,7 @@ input[type="password"] {
 .hover-pixelsize-container {
     display: block;
     font-weight: bold;
+    font-size: 1.2vw;
     color: #ffffff;
 }
 .hover-likes-container {
@@ -553,7 +555,7 @@ input[type="password"] {
     margin: 0, 1%;
 }
 .statuslikesbutton {
-    width: 5vh;
+    width: 3vw;
     height: auto;
     transform: translateX(-10%);
 }
@@ -574,7 +576,7 @@ input[type="password"] {
     text-decoration: none; 
     border-radius: 2em;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.3vw;
     font-weight: bold;
     margin-bottom: 6vh;
     margin-left: 30vw;

@@ -1,6 +1,5 @@
 
 <!-- マイページ-->
-
 <h1 class="status-titlestring">ステータス</h1>
 <div class="status-contant">
     
@@ -34,7 +33,7 @@
         <div class="statusillustsindex">
             <% @user.illusts.each do |t| %>
                 <div class="statusillust">
-                    <%= image_tag t.image_url, size: "250x250", class: "hover-zoom", style: "image-rendering: pixelated;" if t.image? %>
+                    <%= image_tag t.image_url, class: "hover-zoom", style: "image-rendering: pixelated;" if t.image? %>
                     <div class="overlay"></div>
                     <div class="hover-text">
                         <%= link_to illust_path(t.id), class:"hover-text-titles" do %>
@@ -80,7 +79,7 @@
         <div class="statuslikeillustsindex">
             <% @user.liked_illusts.each do |t| %>
                 <div class="statusillust">
-                    <%= image_tag t.image_url, size: "250x250", class: "hover-zoom" if t.image? %>
+                    <%= image_tag t.image_url, class: "hover-zoom" if t.image? %>
                     <div class="overlay"></div>
                     <div class="hover-text">
                         <%= link_to illust_path(t.id), class:"hover-text-titles" do %>
