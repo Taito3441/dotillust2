@@ -87,7 +87,6 @@
     display: flex; 
     justify-content: space-around; 
 }
-
 .rank-container2 {
     display: flex;
     flex-wrap: wrap;
@@ -101,12 +100,12 @@
 .top-rank-textcontainer {
     display: flex;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.5vmax;
 }
 .top-illusts {
-    width: 12vw;
-    height: 12vw;
-    margin: 5px;
+    width: 12vmax;
+    height: 12vmax;
+    margin: 0.3vw;
     position: relative;
     display: flex;
     text-align: center;
@@ -128,8 +127,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 12vw;
-    height: 12vw;
+    width: 12vmax;
+    height: 12vmax;
     z-index: 150;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%);
     opacity: 0;
@@ -142,8 +141,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width:12vw;
-    height: 12vw;
+    width:12vmax;
+    height: 12vmax;
     z-index: 200;
     opacity: 0;
     transition: opacity .3s;
@@ -155,9 +154,9 @@
     opacity: 1;
 }
 .top-hover-text-titles {
-    width: 12vw;
+    width: 12vmax;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 2vmax;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
@@ -175,7 +174,7 @@
 .top-hover-uicon-container {
     display: flex;
     margin-top: 1.6px;
-    width: 12vw;
+    width: 12vmax;
     height: auto;
     justify-content: center;
     align-items: center;
@@ -183,7 +182,7 @@
 .top-hover-username {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.5vmax;
     color: rgb(51, 51, 51);
     text-shadow: 0 0 1px #ffffff;
     transition: all 1s;
@@ -197,7 +196,7 @@
 .top-hover-tag-container {
     display: flex;
     margin-top: 3%;
-    width: 12vw;
+    width: 1vw;
     max-height: 72px;
     align-items: center;
     justify-content: center;
@@ -215,7 +214,7 @@
     text-decoration-color: #3651ff;
 }
 .top-hover-pixel-like-container {
-    width: 12vw;
+    width: 12vmax;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -223,7 +222,7 @@
 .top-hover-pixelsize-container {
     display: block;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 1.2vmax;
     color: #ffffff;
 }
 .top-hover-likes-container {
@@ -233,14 +232,14 @@
     margin: 0, 1%;
 }
 .top-likesbutton {
-    width: 2.3vw;
+    width: 3vmax;
     height: auto;
     transform: translateX(-10%);
 }
 .top-usericon {
     border-radius: 100%;
-    width:  3vw;
-    height: 3vw;
+    width:  3vmax;
+    height: 3vmax;
     transition: all 1s;
 }
 /*--------------------------------------------------*/
