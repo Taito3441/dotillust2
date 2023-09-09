@@ -70,7 +70,7 @@
             <% rank_slice.each do |ranked_illust| %>
                 <div class="rank-box">
                     <div class="top-illusts">
-                        <%= image_tag ranked_illust.illust.image_url, size: "200x200", class: "top-hover-zoom" if ranked_illust.illust.image? %>
+                        <%= image_tag ranked_illust.illust.image_url, class: "top-hover-zoom" if ranked_illust.illust.image? %>
                         <div class="top-overlay"></div>
                         <div class="top-hover-text">
                             <%= link_to illust_path(ranked_illust.illust.id), class:"top-hover-text-titles" do %>
@@ -82,18 +82,9 @@
                                     <span class="top-hover-username"><%= ranked_illust.illust.user.name %></span>
                                 </div>
                             <% end %>
-                            <div class="top-hover-tag-container">
-                                <% ranked_illust.illust.tags.each do |tag| %>
-                                    <% if tag.illusts.count > 0 %>
-                                        <%= link_to tag_illusts_path(tag_id: tag.id), class: "top-hover-tag-border" do %>
-                                        #<%= tag.tag_name %>
-                                        <% end %>
-                                    <% end %>
-                                <% end %>
-                            </div>
                             <div class="top-hover-pixel-like-container">
                                 <div class="top-hover-pixelsize-container">
-                                    ピクセル:<%= ranked_illust.illust.pixels %>
+                                    <%= ranked_illust.illust.pixels %>
                                 </div>
                                 <div class="top-hover-likes-container">
                                     <% if user_signed_in? %>
