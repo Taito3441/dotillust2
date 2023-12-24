@@ -13,7 +13,7 @@
                 </div>
                 <div class="palette-right-down">
                     <button id="eraser-btn">消しゴム</button>
-                    <button id="undo-btn">巻き戻す</button>
+                    <button id="undo-btn">巻き戻す</button>   
                 </div>
             </div>
             <div class="palette-left">
@@ -148,6 +148,7 @@ sizes.forEach(function(size) {
 
 setCanvasSize(16);
 
+-------------------------------------------------------------------------------------
 saveButton.onclick = function() {
     var size = Math.sqrt(pixelCanvas.childNodes.length);
     var canvas = document.createElement('canvas');
@@ -172,6 +173,7 @@ saveButton.onclick = function() {
     link.href = img;
     link.click();
 };
+-------------------------------------------------------------------------------------
 
 pixelCanvas.addEventListener('mousedown', function(e) {
     isDrawing = true;
